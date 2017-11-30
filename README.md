@@ -79,3 +79,5 @@
 2. Run application
 
     > docker-compose up
+    
+    
