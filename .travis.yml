@@ -1,0 +1,25 @@
+sudo: required
+
+language: node
+
+services:
+  - docker
+
+branches:
+  only:
+  - master
+  
+jobs:
+  include:
+    - stage: Build Docker Image
+      script:
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker build -t todo-db ./server/
+      - docker images
+      - docker push $DOCKER_USERNAME/todo-db
+    - stage: Upgrade Rancher Service 
+      script: 
+      - bash ./build.sh
+    - stage: Finish Rancher Service
+      script:
+      - bash ./finish.sh
