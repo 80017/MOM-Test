@@ -27,6 +27,9 @@ RUN npm install
 
 ENV accesskey="$ACCESSKEY"
 ENV secretkey="$SECRETKEY"
+RUN echo 'ENV accesskey="$ACCESSKEY"'
+RUN echo '$SECRETKEY'
+
 
 #build application
 RUN npm run build
