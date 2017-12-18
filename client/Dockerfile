@@ -25,9 +25,9 @@ WORKDIR /opt/app
 ADD . /opt/app
 RUN npm install
 
-ENV accesskey="$ACCESSKEY"
-ENV secretkey="$SECRETKEY"
-RUN echo 'ENV accesskey="$ACCESSKEY"'
+ENV accesskey=$ACCESSKEY
+ENV secretkey=$SECRETKEY
+RUN echo 'ENV accesskey=$ACCESSKEY'
 RUN echo '$SECRETKEY'
 
 
