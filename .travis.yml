@@ -14,13 +14,6 @@ jobs:
     - stage: Build Docker Image
       script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t todo-db ./server/
+      - docker build -t todo-client ./client/
       - docker images
-      - docker tag todo-db $DOCKER_USERNAME/todo-db
-      - docker push $DOCKER_USERNAME/todo-db
-    - stage: Upgrade Rancher Service 
-      script: 
-      - bash ./build.sh
-    - stage: Finish Rancher Service
-      script:
-      - bash ./finish.sh
+      
